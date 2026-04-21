@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Endpoints Layer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px;
+            background: #238636;
+            color: white;
+            border: none;
+        }
+
+        .box {
+            background: #161b22;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+
+        a {
+            color: #58a6ff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Endpoints Layer (end-points.js)</h2>
+
+    <a href="routes.html">← Back</a>
+
+    <div>
+        <button onclick="add('GET')">GET</button>
+        <button onclick="add('POST')">INSERT</button>
+        <button onclick="add('DELETE')">DELETE</button>
+        <button onclick="add('PUT')">ALTER</button>
+    </div>
+
+    <div id="code" class="box">// endpoint code here</div>
+    <div id="output" class="box"></div>
+
+    <script>
+        let endpoint = localStorage.getItem("endpoint") || "LedgerNames";
+
+        function add(type) {
+            document.getElementById("code").innerText +=
+                "\nrouter." + type.toLowerCase() + "('/" + endpoint + "', (req,res)=>{});";
+
+            document.getElementById("output").innerText =
+                "✔ " + type + " added to " + endpoint;
+        }
+    </script>
+
+</body>
+
+</html>

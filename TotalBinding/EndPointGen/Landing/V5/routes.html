@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Routes Layer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px;
+            background: #238636;
+            color: white;
+            border: none;
+        }
+
+        .box {
+            background: #161b22;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #58a6ff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Routes Layer (routes.js)</h2>
+
+    <a href="app.html">← Back</a>
+    <a href="endpoints.html">Next → Endpoints</a>
+
+    <div>
+        <button onclick="subRoute()">Add SubRoute</button>
+        <button onclick="table()">Add Table</button>
+    </div>
+
+    <div id="output" class="box"></div>
+
+    <script>
+        let endpoint = localStorage.getItem("endpoint") || "LedgerNames";
+
+        function subRoute() {
+            document.getElementById("output").innerText =
+                "✔ SubRoute added for " + endpoint;
+        }
+
+        function table() {
+            document.getElementById("output").innerText =
+                "✔ Table created: Api/V1/" + endpoint;
+        }
+    </script>
+
+</body>
+
+</html>

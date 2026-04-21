@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>App Layer</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP -->
+    <div class="top">
+        <h2>Build API from your data</h2>
+        <p>You have data → You create API → Starts in <b>app.js</b></p>
+    </div>
+
+    <!-- 3 COLUMNS -->
+    <div class="content">
+
+        <!-- COL 1 : BEFORE -->
+        <div class="col">
+            <h3>Before (app.js)</h3>
+
+            <div class="box">
+<pre id="beforeCode">
+// app.js
+
+...some code 
+
+const app = express();
+const server = http.createServer(app);
+
+var port = normalizePort(process.env.PORT || 3000);
+
+app.use(express.static('Public'));
+
+...some code
+</pre>
+            </div>
+        </div>
+
+        <!-- COL 2 : ACTION -->
+        <div class="col">
+            <h3>Action</h3>
+
+            <input id="apiName" placeholder="Enter API name">
+            <button onclick="createAPI()" id="createBtn">Create API</button>
+
+            <div class="subtitle">Transformation: app.js will be updated</div>
+        </div>
+
+        <!-- COL 3 : AFTER -->
+        <div class="col">
+            <h3>After (app.js)</h3>
+
+            <div class="box">
+<pre id="outputCode">
+// No changes yet
+</pre>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>App Layer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px;
+            background: #238636;
+            color: white;
+            border: none;
+        }
+
+        .box {
+            background: #161b22;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #58a6ff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>App Layer (app.js)</h2>
+
+    <a href="routes.html">Next → Routes</a>
+
+    <div>
+        <button onclick="fix()">Fix App</button>
+        <button onclick="create()">Create Endpoint</button>
+    </div>
+
+    <div id="output" class="box">Start here</div>
+
+    <script>
+        let endpoint = "LedgerNames";
+
+        function fix() {
+            document.getElementById("output").innerText = "✔ app.js configured";
+        }
+
+        function create() {
+            endpoint = prompt("Enter endpoint:", "LedgerNames") || "LedgerNames";
+            localStorage.setItem("endpoint", endpoint);
+            document.getElementById("output").innerText = "✔ Created: " + endpoint;
+        }
+    </script>
+
+</body>
+
+</html>
