@@ -7,8 +7,6 @@
 
     <title>kschema CLI</title>
 
-    <meta name="description" content="A minimal CLI to scaffold projects instantly using templates" />
-
     <style>
         body {
             font-family: system-ui, sans-serif;
@@ -31,12 +29,6 @@
 
         .tagline {
             color: #8b949e;
-            margin-bottom: 10px;
-        }
-
-        .sub {
-            color: #8b949e;
-            font-size: 14px;
             margin-bottom: 40px;
         }
 
@@ -100,8 +92,7 @@
     <div class="container">
 
         <h1>kschema CLI</h1>
-        <div class="tagline">Scaffold projects instantly. Zero setup. Zero confusion.</div>
-        <div class="sub">A minimal CLI for project scaffolding • v1.3.4</div>
+        <div class="tagline">Generate projects instantly. No setup. No confusion.</div>
 
         <h2>Install</h2>
         <div class="card">
@@ -130,21 +121,21 @@
         <div class="links">
             <a href="https://github.com/keshavsoft/kschema-init" target="_blank">GitHub</a>
             <a href="https://www.npmjs.com/package/@keshavsoft/kschema-cli" target="_blank">NPM</a>
-            <a href="https://keshavsoft.github.io/kschema-cli-site/" target="_blank">Preview</a>
         </div>
+
         <footer>
-            Built by KeshavSoft • cli.keshavsoft.com
+            Built by KeshavSoft
         </footer>
 
     </div>
 
     <script>
-        const copy = (btn) => {
+        function copy(btn) {
             const text = btn.nextElementSibling.innerText;
             navigator.clipboard.writeText(text);
             btn.innerText = "Copied";
             setTimeout(() => btn.innerText = "Copy", 1000);
-        };
+        }
     </script>
 
 </body>
