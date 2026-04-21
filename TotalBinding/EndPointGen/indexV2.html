@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndPointGen Full Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .header {
+            padding: 10px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        button {
+            margin: 5px;
+            padding: 6px 10px;
+            background: #238636;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            height: 92vh;
+        }
+
+        .sidebar {
+            width: 25%;
+            background: #161b22;
+            padding: 10px;
+            border-right: 1px solid #30363d;
+        }
+
+        .editor {
+            width: 75%;
+            padding: 10px;
+        }
+
+        .file {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .file:hover {
+            color: #58a6ff;
+        }
+
+        .active {
+            color: #58a6ff;
+        }
+
+        .code {
+            background: #0d1117;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+
+        .output {
+            margin-top: 10px;
+            background: #161b22;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div id="actions">Select a file</div>
+    </div>
+
+    <div class="container">
+
+        <!-- Explorer -->
+        <div class="sidebar">
+            <h3>Explorer</h3>
+
+            <div onclick="openFile('app.js')" class="file">app.js</div>
+
+            <div>Api</div>
+            <div class="file" onclick="openFile('routes.js')">└── routes.js</div>
+
+            <div class="file" onclick="openFile('end-points.js')">
+                &nbsp;&nbsp;&nbsp;&nbsp;└── end-points.js
+            </div>
+        </div>
+
+        <!-- Editor -->
+        <div class="editor">
+            <h3 id="filename">No file selected</h3>
+
+            <div id="code" class="code">
+                Click a file from Explorer
+            </div>
+
+            <div id="output" class="output"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        let endpoint = "LedgerNames";
+
+        function openFile(file) {
+            document.getElementById("filename").innerText = file;
+
+            let actions = "";
+            let code = "";
+
+            // app.js context
+            if (file === "app.js") {
+                actions = `
+      <button onclick="fixApp()">Fix</button>
+      <button onclick="createEndpoint()">CreateEndpoint</button>
+    `;
+
+                code = `// app.js\nconst express = require('express');\nconst app = express();`;
+            }
+
+            // routes.js context
+            if (file === "routes.js") {
+                actions = `
+      <button onclick="addSubRoute()">AddSubRoute</button>
+      <button onclick="addTable()">AddTableName</button>
+    `;
+
+                code = `// routes.js\nconst router = require('express').Router();`;
+            }
+
+            // end-points.js context
+            if (file === "end-points.js") {
+                actions = `
+      <button onclick="addMethod('GET')">GET</button>
+      <button onclick="addMethod('POST')">INSERT</button>
+      <button onclick="addMethod('DELETE')">DELETE</button>
+      <button onclick="addMethod('PUT')">ALTER</button>
+    `;
+
+                code = `// end-points.js\nconst router = require('express').Router();`;
+            }
+
+            document.getElementById("actions").innerHTML = actions;
+            document.getElementById("code").innerText = code;
+        }
+
+        function fixApp() {
+            document.getElementById("output").innerText =
+                "✔ app.js fixed with middleware and routes";
+        }
+
+        function createEndpoint() {
+            endpoint = prompt("Enter endpoint name:", "LedgerNames") || "LedgerNames";
+
+            document.getElementById("output").innerText =
+                "✔ Endpoint created: " + endpoint;
+        }
+
+        function addSubRoute() {
+            document.getElementById("output").innerText =
+                "✔ SubRoute added to routes.js";
+        }
+
+        function addTable() {
+            document.getElementById("output").innerText =
+                "✔ Table folder created: " + endpoint;
+        }
+
+        function addMethod(type) {
+            document.getElementById("code").innerText +=
+                `\nrouter.${type.toLowerCase()}('/${endpoint}', (req,res)=>{});`;
+
+            document.getElementById("output").innerText =
+                "✔ " + type + " method added";
+        }
+
+    </script>
+
+</body>
+
+</html>

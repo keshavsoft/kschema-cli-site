@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndPointGen</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        h2 {
+            margin-top: 50px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+        }
+
+        p {
+            color: #8b949e;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            margin-right: 10px;
+            background: #238636;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .box {
+            background: #161b22;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        /* Demo */
+        .demo {
+            display: flex;
+            height: 500px;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            width: 30%;
+            background: #161b22;
+            padding: 10px;
+        }
+
+        .editor {
+            width: 70%;
+            padding: 10px;
+        }
+
+        .file {
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .file:hover {
+            color: #58a6ff;
+        }
+
+        .code {
+            background: #0d1117;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+        }
+
+        .output {
+            margin-top: 10px;
+            background: #161b22;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .actions button {
+            margin: 5px;
+            padding: 6px 10px;
+            background: #238636;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <h1>Build Express APIs from your data in seconds</h1>
+        <p>Turn any table into a structured Node.js API — routes, endpoints, testing included.</p>
+
+        <a class="btn" href="#">Install Extension</a>
+        <a class="btn" href="#demo">View Demo</a>
+
+        <!-- PROBLEM -->
+        <h2>The Problem</h2>
+        <div class="box">
+            You have a table like <b>LedgerNames</b> but creating API requires setup, routes, controllers and testing.
+        </div>
+
+        <!-- IDEA -->
+        <h2>The Shift</h2>
+        <div class="box">
+            Table → API → Methods → Done
+        </div>
+
+        <!-- FLOW -->
+        <h2>Architecture Flow</h2>
+        <div class="box">
+            app.js → routes.js → end-points.js
+        </div>
+
+        <!-- DEMO -->
+        <h2 id="demo">Interactive Demo</h2>
+
+        <div class="demo">
+
+            <div class="sidebar">
+                <b>Explorer</b><br><br>
+                <div onclick="openFile('app.js')" class="file">app.js</div>
+                <div>Api</div>
+                <div class="file" onclick="openFile('routes.js')">└── routes.js</div>
+                <div class="file" onclick="openFile('end-points.js')">&nbsp;&nbsp;&nbsp;&nbsp;└── end-points.js</div>
+            </div>
+
+            <div class="editor">
+                <div id="actions" class="actions">Select a file</div>
+
+                <div id="code" class="code">
+                    Click a file from Explorer
+                </div>
+
+                <div id="output" class="output"></div>
+            </div>
+
+        </div>
+
+        <!-- RESULT -->
+        <h2>Result</h2>
+        <div class="box">
+            GET /Api/V1/LedgerNames/ShowAll → API ready instantly
+        </div>
+
+        <!-- CTA -->
+        <h2>Start Now</h2>
+        <a class="btn" href="#">Install Extension</a>
+
+    </div>
+
+    <script>
+
+        let endpoint = "LedgerNames";
+
+        function openFile(file) {
+
+            let actions = "";
+            let code = "";
+
+            if (file === "app.js") {
+                actions = `
+      <button onclick="fixApp()">Fix</button>
+      <button onclick="createEndpoint()">CreateEndpoint</button>
+    `;
+                code = "// app.js\nExpress server setup";
+            }
+
+            if (file === "routes.js") {
+                actions = `
+      <button onclick="addSubRoute()">AddSubRoute</button>
+      <button onclick="addTable()">AddTable</button>
+    `;
+                code = "// routes.js\nRouter configuration";
+            }
+
+            if (file === "end-points.js") {
+                actions = `
+      <button onclick="addMethod('GET')">GET</button>
+      <button onclick="addMethod('POST')">INSERT</button>
+      <button onclick="addMethod('DELETE')">DELETE</button>
+      <button onclick="addMethod('PUT')">ALTER</button>
+    `;
+                code = "// end-points.js\nEndpoint logic";
+            }
+
+            document.getElementById("actions").innerHTML = actions;
+            document.getElementById("code").innerText = code;
+        }
+
+        function fixApp() {
+            document.getElementById("output").innerText = "✔ app.js fixed";
+        }
+
+        function createEndpoint() {
+            endpoint = prompt("Enter endpoint:", "LedgerNames") || "LedgerNames";
+            document.getElementById("output").innerText = "✔ Created " + endpoint;
+        }
+
+        function addSubRoute() {
+            document.getElementById("output").innerText = "✔ SubRoute added";
+        }
+
+        function addTable() {
+            document.getElementById("output").innerText = "✔ Table created: " + endpoint;
+        }
+
+        function addMethod(type) {
+            document.getElementById("code").innerText +=
+                `\nrouter.${type.toLowerCase()}('/${endpoint}', (req,res)=>{});`;
+
+            document.getElementById("output").innerText =
+                "✔ " + type + " added";
+        }
+
+    </script>
+
+</body>
+
+</html>

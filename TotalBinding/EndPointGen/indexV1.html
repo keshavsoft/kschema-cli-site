@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndPointGen Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0d1117;
+            color: #c9d1d9;
+        }
+
+        .header {
+            padding: 15px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        button {
+            margin-right: 10px;
+            padding: 8px 12px;
+            background: #238636;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            height: 90vh;
+        }
+
+        .sidebar {
+            width: 30%;
+            background: #161b22;
+            padding: 15px;
+            border-right: 1px solid #30363d;
+        }
+
+        .editor {
+            width: 70%;
+            padding: 15px;
+        }
+
+        .box {
+            background: #0d1117;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .file {
+            margin-left: 15px;
+            color: #8b949e;
+        }
+
+        .highlight {
+            color: #58a6ff;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #161b22;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <button onclick="createEndpoint()">Create Endpoint</button>
+        <button onclick="addMethod()">Add Method</button>
+        <button onclick="generateFiles()">Generate Files</button>
+        <button onclick="runApi()">Run API</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Fake Explorer -->
+        <div class="sidebar">
+            <h3>Explorer</h3>
+            <div id="tree"></div>
+        </div>
+
+        <!-- Code Editor -->
+        <div class="editor">
+            <h3>Editor</h3>
+            <div id="code" class="box">Click "Create Endpoint"</div>
+
+            <div id="output" class="output"></div>
+        </div>
+
+    </div>
+
+    <script>
+
+        let step = 0;
+        let endpoint = "LedgerNames";
+
+        function createEndpoint() {
+            step = 1;
+            document.getElementById("code").innerHTML =
+                "Enter endpoint: <span class='highlight'>" + endpoint + "</span>";
+
+            document.getElementById("tree").innerHTML =
+                "Api<br> └── V1<br> &nbsp;&nbsp;&nbsp;&nbsp;(empty)";
+        }
+
+        function addMethod() {
+            if (step < 1) return;
+            step = 2;
+
+            document.getElementById("code").innerHTML =
+                "Method selected: <span class='highlight'>GET / ShowAll</span>";
+        }
+
+        function generateFiles() {
+            if (step < 2) return;
+            step = 3;
+
+            document.getElementById("tree").innerHTML =
+                "Api<br> └── V1<br> &nbsp;&nbsp;&nbsp;&nbsp;└── " + endpoint + "<br>" +
+                "<div class='file'>controller.js</div>" +
+                "<div class='file'>service.js</div>" +
+                "<div class='file'>end-points.js</div>" +
+                "<div class='file'>rest.http</div>";
+
+            document.getElementById("code").innerHTML =
+                `app.get('/${endpoint}', (req, res) => {
+    res.send("${endpoint} data");
+});`;
+        }
+
+        function runApi() {
+            if (step < 3) return;
+
+            document.getElementById("output").innerHTML =
+                "Response: <span class='highlight'>200 OK - " + endpoint + " data</span>";
+        }
+
+    </script>
+
+</body>
+
+</html>
