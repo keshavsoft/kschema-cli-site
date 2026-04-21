@@ -7,8 +7,7 @@ function createAPI() {
         return;
     };
 
-    const code = `// app.js
-
+    const code = `
 ...some code 
 
 <span class="highlight">import { router as routerFromApi } from "./Api/routes.js";</span>
@@ -24,8 +23,22 @@ app.use(express.static('Public'));
 `;
 
     output.innerHTML = `<pre>${code}</pre>`;
-    // output.innerText = code;
-}
+
+    const routesBox = document.getElementById("apiFiles");
+    const routesCode = document.getElementById("routesCode");
+
+    routesBox.style.display = "block";
+
+    routesCode.innerText = `// Api/routes.js
+
+import express from "express";
+export const router = express.Router();
+
+router.get("/", (req, res) => {
+    res.send("${name} working");
+});
+`;
+};
 
 function goNext() {
     window.location.href = "routes.html";
