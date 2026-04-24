@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>kschema CLI Guide</title>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  color: #58a6ff;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 40px;
+  color: #fff;
+}
+
+p {
+  color: #8b949e;
+}
+
+.card {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.code-box {
+  background: #0d1117;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+}
+
+button {
+  background: #238636;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2ea043;
+}
+
+.icon {
+  color: #58a6ff;
+  margin-right: 10px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+pre {
+  margin: 0;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #8b949e;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1><i class="fa-solid fa-code icon"></i>kschema CLI</h1>
+<p>Scaffold backend projects instantly. Beginner friendly 🚀</p>
+
+<!-- Run -->
+<h2><i class="fa-solid fa-play icon"></i>Step 1: Run CLI</h2>
+<div class="card">
+
+  <p>
+    👉 Open your <b>Command Prompt / Terminal</b><br>
+    👉 Copy the below command and paste it in terminal<br>
+    👉 Press <b>Enter</b> to run
+  </p>
+
+  <div class="code-box">
+    <span id="run">npx @keshavsoft/kschema-cli</span>
+    <button onclick="copy('run')">
+      <i class="fa-solid fa-copy"></i>
+    </button>
+  </div>
+
+  <p>
+    ✅ After running the command, you will see options like:
+  </p>
+
+  <div class="code-box">
+    <span id="usage">kschema &lt;init|test&gt; [args]</span>
+    <button onclick="copy('usage')">
+      <i class="fa-solid fa-copy"></i>
+    </button>
+  </div>
+
+  <p>
+    📌 <b>init</b> → Create a new project<br>
+    📌 <b>test</b> → Run test commands
+  </p>
+
+</div>
+
+
+<!-- Create -->
+<h2><i class="fa-solid fa-folder-plus icon"></i>Step 2: Create Project</h2>
+<div class="card">
+
+  <p>
+    👉 After running <b>Step 1</b>, your terminal will display options like:
+  </p>
+
+  <div class="code-box">
+    <span>kschema &lt;init|test&gt; [args]</span>
+  </div>
+
+  <p>
+    👉 Now you need to choose <b>init</b> to create a new project<br>
+    👉 Copy the below command and paste it in terminal<br>
+    👉 Then press <b>Enter</b>
+  </p>
+
+  <div class="code-box">
+    <span id="create">npx @keshavsoft/kschema-cli init kschema</span>
+    <button onclick="copy('create')">
+      <i class="fa-solid fa-copy"></i>
+    </button>
+  </div>
+
+  <p>
+    🎉 This will create a new project folder named <b>kschema</b><br>
+    📁 Inside it, all required files and folders will be generated automatically
+  </p>
+
+</div>
+
+<!-- Move -->
+<h2><i class="fa-solid fa-folder-plus icon"></i>Step 3: Move to Project</h2>
+<div class="card">
+
+  <p>
+    👉 After Step 2, a new folder named <b>kschema</b> is created in your system<br>
+    👉 But your terminal is still pointing to the old location (previous folder)
+  </p>
+
+  <p>
+    👉 Now you need to move inside the newly created project folder<br>
+    👉 For that, use the <b>cd (change directory)</b> command
+  </p>
+
+  <div class="code-box">
+    <span id="move">cd kschema</span>
+    <button onclick="copy('move')">
+      <i class="fa-solid fa-copy"></i>
+    </button>
+  </div>
+
+  <p>
+    📌 <b>cd</b> means "change directory"<br>
+    📁 This command moves your terminal into the <b>kschema</b> project folder
+  </p>
+
+  <p>
+    ✅ Now your terminal is inside the project<br>
+    👉 You can start working with project files like <b>app.js, config.json</b>
+  </p>
+
+</div>
+
+
+<!-- Install -->
+<h2><i class="fa-solid fa-download icon"></i>Step 4: Install Dependencies</h2>
+<div class="card">
+
+  <p>
+    👉 Now you are inside the project folder (<b>kschema</b>) after Step 3<br>
+    👉 The project already has a <b>package.json</b> file
+  </p>
+
+  <p>
+    👉 This file contains all required libraries (dependencies) needed to run the project<br>
+    👉 But they are not installed yet in your system
+  </p>
+
+  <p>
+    👉 To install all required packages, run the below command:
+  </p>
+
+  <div class="code-box">
+    <span id="install">npm i</span>
+    <button onclick="copy('install')">
+      <i class="fa-solid fa-copy"></i>
+    </button>
+  </div>
+
+  <p>
+    📦 This will download and install all dependencies into a folder called <b>node_modules</b><br>
+    ⚙️ It reads from <b>package.json</b> and installs everything automatically
+  </p>
+
+  <p>
+    ✅ After this step, your project is fully ready to run<br>
+    🚀 You can now execute project files like <b>app.js</b>
+  </p>
+
+</div>
+
+
+<!-- Open -->
+<h2><i class="fa-solid fa-code icon"></i>Step 5: Open Project in VS Code</h2>
+<div class="card">
+
+  <p>
+    👉 After Step 4, all dependencies are installed and your project is ready<br>
+    👉 Now it's time to open the project in a code editor
+  </p>
+
+  <p>
+    💻 <b>Visual Studio Code (VS Code)</b> is a popular code editor used by developers<br>
+    👉 It helps you write, edit, and manage your project files easily
+  </p>
+
+  <p>
+    👉 Since you are already inside the project folder in terminal,<br>
+    👉 you can open the project directly in VS Code using this command:
+  </p>
+
+  <div class="code-box">
+    <span id="vscode">code .</span>
+    <button onclick="copy('vscode')">
+      <i class="fa-solid fa-copy"></i>
+    </button>
+  </div>
+
+  <p>
+    📌 <b>code .</b> means "open current folder in VS Code"<br>
+    📁 It will open the entire <b>kschema</b> project in the editor
+  </p>
+
+  <p>
+    ✅ Now you can see files like <b>app.js, config.json, Data folder</b><br>
+    👉 You can start editing and running your project from here
+  </p>
+
+  <p>
+    ⚠️ If the command doesn't work, make sure VS Code is installed and<br>
+    👉 "Add to PATH" option is enabled during installation
+  </p>
+
+</div>
+
+<!-- Structure -->
+<h2><i class="fa-solid fa-folder-tree icon"></i>Project Structure</h2>
+<div class="card">
+<pre>
+kschema/
+│── .vscode/        → VS Code settings
+│── app.js          → main file
+│── Config/         → config folder
+│── config.json     → configuration
+│── Data/           → data storage
+│── package.json    → dependencies
+│── read.js         → read logic
+│── write.js        → write logic
+</pre>
+</div>
+
+<!-- Explanation -->
+<h2><i class="fa-solid fa-lightbulb icon"></i>How it Works</h2>
+<div class="card">
+<p>📥 read.js → Reads data</p>
+<p>📤 write.js → Writes data</p>
+<p>⚙️ config.json → Controls paths</p>
+<p>📦 Data folder → Stores records</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Built in keshavsoft 💙 | kschema CLI Guide</p>
+</div>
+
+</div>
+
+<script>
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied: " + text);
+}
+</script>
+
+</body>
+</html>
+
