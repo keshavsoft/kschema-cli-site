@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>kschema CLI Guide</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #58a6ff;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #ffffff;
+    }
+
+    p {
+      color: #8b949e;
+    }
+
+    .code-box {
+      background: #161b22;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: monospace;
+    }
+
+    button {
+      background: #238636;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2ea043;
+    }
+
+    .file-structure {
+      background: #161b22;
+      padding: 15px;
+      border-radius: 10px;
+      font-family: monospace;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>kschema CLI</h1>
+  <p>Scaffold projects instantly. Zero setup. Beginner friendly 🚀</p>
+
+  <h2>Install</h2>
+  <div class="code-box">
+    <span id="install">npm i -g @keshavsoft/kschema-cli</span>
+    <button onclick="copy('install')">Copy</button>
+  </div>
+
+  <h2>Quick Start</h2>
+  <div class="code-box">
+    <span id="start">npx @keshavsoft/kschema-cli</span>
+    <button onclick="copy('start')">Copy</button>
+  </div>
+
+  <!-- <h2>Usage</h2> -->
+  <p>After running CLI:</p>
+  <div class="code-box">
+    <span id="usage">kschema &lt;init|test&gt; [args]</span>
+    <button onclick="copy('usage')">Copy</button>
+  </div>
+
+  <h2>Choose one</h2>
+
+  <div class="code-box">
+    <span id="cmd1">npx @keshavsoft/kschema-cli init kschema</span>
+    <button onclick="copy('cmd1')">Copy</button>
+  </div>
+
+  <!-- <div class="code-box">
+    <span id="cmd2">kschema init basic MyApp</span>
+    <button onclick="copy('cmd2')">Copy</button>
+  </div>
+
+  <div class="code-box">
+    <span id="cmd3">kschema init express MyServer</span>
+    <button onclick="copy('cmd3')">Copy</button>
+  </div> -->
+
+  <h2>Project Structure</h2>
+  <div class="file-structure">
+<pre>
+kschema/
+│── .vscode/
+│── app.js
+│── Config/
+│── config.json
+│── Data/
+│── package.json
+│── package-lock.json
+│── read.js
+│── write.js
+</pre>
+  </div>
+
+</div>
+
+<script>
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied: " + text);
+}
+</script>
+
+</body>
+</html>
